@@ -73,6 +73,7 @@ class OrdersController extends Controller
                 'orders.user_deliveryman_id',
                 'orders.total',
                 'orders.created_at',
+                DB::raw("COALESCE(DATE_FORMAT(orders.created_at, '%d/%m/%Y %H:%I:%S'),'') AS created_at_br"),
                 'orders.updated_at',
                 'orders.total',
                 DB::raw('order_status.name AS ds_status'),
@@ -83,6 +84,7 @@ class OrdersController extends Controller
                 ->leftJoin('users', function($join){
                     $join->on('orders.client_id', '=', 'users.id');
                 })
+                ->orderBy('orders.id','desc')
                 ->paginate(30);
         return view('admin.orders.index', compact('orders'));
     }

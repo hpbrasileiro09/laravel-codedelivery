@@ -10,6 +10,7 @@
 				<td>ID</td>
 				<td>Cliente</td>
 				<td>Total</td>
+				<td>Dt.Cria&ccedil;&atilde;o</td>
 				<td>Status</td>
 				<td>A&ccedil;&atilde;o</td>
 			</tr>
@@ -20,6 +21,7 @@
 				<td>{{$order->id}}</td>
 				<td>{{$order->nm_client}}</td>
 				<td>{{$order->total}}</td>
+				<td>{{$order->created_at_br}}</td>
 				<td>{{$order->ds_status}}</td>
 				<td>
 					<a href="{{route('admin.orders.edit',['id' => $order->id])}}" class="btn btn-default btn-sm">Editar</a>
