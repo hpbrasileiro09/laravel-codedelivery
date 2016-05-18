@@ -1,7 +1,11 @@
 @extends('app')
 @section('content')
 
-<script src="http://192.168.56.142/laravel-codedelivery/public/js/codedelivery.js"></script>
+<script type="text/javascript">
+	var _url_base = "{{$url->to('/')}}";
+</script>
+
+<script src="{{$url->to('/')}}/js/codedelivery.js"></script>
 
 <div class="container">
 	<h3>Editando pedido: {{ $order->id }}</h3>
@@ -77,6 +81,7 @@
 
 	<div class="form-group">
 		{!! Form::submit('Salvar pedido',['class' => 'btn btn-primary']) !!}
+		&nbsp;<a href="{{ URL::previous() }}"><button type="button" class="btn btn-primary">Voltar</button></a>
 	</div>
 	{!! Form::close() !!}
 

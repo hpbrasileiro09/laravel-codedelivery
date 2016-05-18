@@ -113,7 +113,7 @@ $(document).ready(function() {
 
 	$('#myModal').bind('hidden.bs.modal', function () {
 		if ($('#action').val() == 'add') {
-			$.getJSON( getRootUrl() + '/laravel-codedelivery/public/admin/products/json/' + $('#product_id').val(), function( data ) {
+			$.getJSON( _url_base + '/admin/products/json/' + $('#product_id').val(), function( data ) {
 				var _quantity = $('#quantity').val(); 
 				if (_quantity <= 0) _quantity = 1;
 				var total = _quantity * data.price;
@@ -121,7 +121,7 @@ $(document).ready(function() {
 			});
 		}
 		if ($('#action').val() == 'edit') {
-			$.getJSON( getRootUrl() + '/laravel-codedelivery/public/admin/products/json/' + $('#product_id').val(), function( data ) {
+			$.getJSON( _url_base + '/admin/products/json/' + $('#product_id').val(), function( data ) {
 				var _icont = parseInt($('#count').val());
 				$('#product_id_'+_icont).val($('#product_id').val());
 				$('#quantity_'+_icont).val($('#quantity').val());
