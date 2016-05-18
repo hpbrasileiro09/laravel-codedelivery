@@ -13,10 +13,16 @@ use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Repositories\OrderStatusRepository;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\UrlGenerator;
 use CodeDelivery\Models\Order;
 
 class OrdersController extends Controller
 {
+
+    /**
+    * @var UrlGenerator
+    */
+    protected $url;
 
     /**
     * @var OrderRepository
@@ -44,6 +50,7 @@ class OrdersController extends Controller
     protected $service;
 
     public function __construct(
+        UrlGenerator $url,
         OrderRepository $repository,
         OrderService $service,
         ProductRepository $productRepository,
@@ -55,6 +62,7 @@ class OrdersController extends Controller
         $this->userRepository = $userRepository;
         $this->orderStatusRepository = $orderStatusRepository;
         $this->service = $service;
+        $this->url = $url;
     }    
 
     public function index()
@@ -90,13 +98,15 @@ class OrdersController extends Controller
         $clients = $this->userRepository->lists('name', 'id');
         $products = $this->productRepository->all();
         $status = $this->orderStatusRepository->lists('name', 'id');
+        $url = $this->url;
         $icont = 0;
 		return view('admin.orders.create', 
             compact(
                 'clients', 
                 'products', 
                 'status', 
-                'icont'
+                'icont',
+                'url'
             ));
     }
 
@@ -107,6 +117,7 @@ class OrdersController extends Controller
         $clients = $this->userRepository->lists('name', 'id');
         $deliveryman = $this->userRepository->lists('name', 'id', '<Selecione um entregador>');
         $status = $this->orderStatusRepository->lists('name', 'id');
+        $url = $this->url;
         $icont = 0;
 		return view('admin.orders.edit', 
             compact(
@@ -115,6 +126,7 @@ class OrdersController extends Controller
                 'products', 
                 'status', 
                 'icont',
+                'url',
                 'deliveryman'
             ));
     }

@@ -7,6 +7,7 @@
 	@include('admin.products._form')
 	<div class="form-group">
 		{!! Form::submit('Salvar produto',['class' => 'btn btn-primary']) !!}
+		&nbsp;<a href="{{ URL::previous() }}"><button type="button" class="btn btn-primary">Voltar</button></a>
 	</div>
 	{!! Form::close() !!}
 </div>
