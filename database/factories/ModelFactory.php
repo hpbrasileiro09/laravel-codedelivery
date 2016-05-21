@@ -49,3 +49,19 @@ $factory->define(CodeDelivery\Models\OrderStatus::class, function (Faker\Generat
         'name' => $faker->word,
     ];
 });
+
+$factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $faker) {
+    return [
+        'client_id' => rand(1, 10),
+        'total' => rand(50, 100),
+        'status' => 1,
+    ];
+});
+
+$factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) {
+    return [
+        'product_id' => rand(1, 5),
+        'qtd' => 2,
+        'price' => 50,        
+    ];
+});

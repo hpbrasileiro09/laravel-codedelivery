@@ -67,46 +67,23 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::select(
-                'orders.id',
-                'orders.client_id',
-                'orders.user_deliveryman_id',
-                'orders.total',
-                'orders.created_at',
-                DB::raw("COALESCE(DATE_FORMAT(orders.created_at, '%d/%m/%Y %H:%I:%S'),'') AS created_at_br"),
-                'orders.updated_at',
-                'orders.total',
-                DB::raw('order_status.name AS ds_status'),
-                DB::raw('users.name AS nm_client'))
-                ->leftJoin('order_status', function($join){
-                    $join->on('orders.status', '=', 'order_status.id');
-                })
-                ->leftJoin('users', function($join){
-                    $join->on('orders.client_id', '=', 'users.id');
-                })
-                ->orderBy('orders.id','desc')
-                ->paginate(30);
+        $orders = $this->repository->paginate(30);
         return view('admin.orders.index', compact('orders'));
-    }
-
-    public function __index()
-    {
-		$orders = $this->repository->paginate(30);
-		return view('admin.orders.index', compact('orders'));
     }
 
     public function create()
     {
         $clients = $this->userRepository->lists('name', 'id');
         $products = $this->productRepository->all();
-        $status = $this->orderStatusRepository->lists('name', 'id');
+        //$list_status = [ 0 => 'Pendente', 1 => 'A caminho', 2 => 'Entregue' ];
+        $list_status = $this->orderStatusRepository->lists('name', 'id');
         $url = $this->url;
         $icont = 0;
 		return view('admin.orders.create', 
             compact(
                 'clients', 
                 'products', 
-                'status', 
+                'list_status', 
                 'icont',
                 'url'
             ));
@@ -117,8 +94,9 @@ class OrdersController extends Controller
     	$order = $this->repository->find($id);
         $products = $this->productRepository->all();
         $clients = $this->userRepository->lists('name', 'id');
-        $deliveryman = $this->userRepository->lists('name', 'id', '<Selecione um entregador>');
-        $status = $this->orderStatusRepository->lists('name', 'id');
+        $deliveryman = $this->userRepository->getDeliverymen();
+        //$list_status = [ 0 => 'Pendente', 1 => 'A caminho', 2 => 'Entregue' ];
+        $list_status = $this->orderStatusRepository->lists('name', 'id');
         $url = $this->url;
         $icont = 0;
 		return view('admin.orders.edit', 
@@ -126,7 +104,7 @@ class OrdersController extends Controller
                 'order', 
                 'clients', 
                 'products', 
-                'status', 
+                'list_status', 
                 'icont',
                 'url',
                 'deliveryman'
@@ -140,10 +118,10 @@ class OrdersController extends Controller
         return redirect()->route('admin.orders.index');
     }
 
-    public function update(AdminOrderRequest $request, $id)
+    public function update(Request $request, $id)
     {
     	$data = $request->all();
-		$this->service->update($data, $id);
+		$this->repository->update($data, $id);
 		return redirect()->route('admin.orders.index');
     }
 
