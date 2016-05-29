@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-/*
 Route::get('/', function() {
 	return view('welcome');
 });
@@ -21,7 +18,6 @@ Route::get('/', function() {
 Route::get('/home', function() {
 	return view('welcome');
 });
-*/
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -30,6 +26,8 @@ Route::controllers([
 
 Route::match(array('GET', 'POST'), '/login', 'LoginController@login');
 Route::match(array('GET', 'POST'), '/logout', 'LoginController@logout');
+
+Route::get('panel', ['as' => 'panel', 'uses' => 'HomeController@index']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole:admin', 'as' => 'admin.'], function() {
 

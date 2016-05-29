@@ -12,14 +12,10 @@ class LoginController extends Controller {
 
 	public function login()
 	{
-
-		\Storage::append('codedelivery.log', '00-Login');
-
 		$credenciais = Request::only('email', 'password');
 
 		if(Auth::attempt($credenciais)) {
-			//return view('home');
-			return redirect()->action('HomeController@index');
+			return view('admin.panel.index');
 		}
 
 		$_success_message = "1";
@@ -31,17 +27,13 @@ class LoginController extends Controller {
 		];
 
 		return view('auth.login')->with($data);		
-
 	}
 
 	public function logout()
 	{
-
-		\Storage::append('codedelivery.log', '00-Logout');
-
 		Auth::logout();
 
-		return redirect('home');
+		return view('welcome');
 	}
 
 }

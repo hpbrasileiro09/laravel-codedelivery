@@ -18,11 +18,9 @@ class CheckRole
     public function handle($request, Closure $next, $role)
     {
         if (!Auth::check()) {
-            \Storage::append('codedelivery.log', '00-CheckRole-!check');
             return redirect('/auth/login');
         }
         if (Auth::user()->role <> $role) {
-            \Storage::append('codedelivery.log', '00-CheckRole-role <> admin');
             return redirect('/auth/login');
         }
         return $next($request);
