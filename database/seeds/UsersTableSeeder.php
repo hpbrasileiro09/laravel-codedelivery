@@ -15,14 +15,14 @@ class UsersTableSeeder extends Seeder
             'name' => 'Hernando Brasileiro', 
             'email' => 'hpbrasileiro@hotmail.com', 
             'password' => bcrypt('123456'),
-        ]);
+        ])->client()->save(factory(\CodeDelivery\Models\Client::class)->make());
 
         factory(\CodeDelivery\Models\User::class)->create([
             'name' => 'Michel Temer', 
             'email' => 'hpbrasileiro@gmail.com', 
             'password' => bcrypt('123456'),
             'role' => 'admin',
-        ]);
+        ])->client()->save(factory(\CodeDelivery\Models\Client::class)->make());
 
         factory(\CodeDelivery\Models\User::class, 10)->create()->each(function($u) {
        		$u->client()->save(factory(\CodeDelivery\Models\Client::class)->make());

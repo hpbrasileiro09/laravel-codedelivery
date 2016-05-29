@@ -15,13 +15,13 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $role)
     {
         if (!Auth::check()) {
             \Storage::append('codedelivery.log', '00-CheckRole-!check');
             return redirect('/auth/login');
         }
-        if (Auth::user()->role <> "admin") {
+        if (Auth::user()->role <> $role) {
             \Storage::append('codedelivery.log', '00-CheckRole-role <> admin');
             return redirect('/auth/login');
         }
