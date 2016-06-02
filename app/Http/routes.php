@@ -24,6 +24,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::post('oauth/access_token', function () {
+	return Response::json(Authorizer::issueAccessToken());
+});
+
 Route::match(array('GET', 'POST'), '/login', 'LoginController@login');
 Route::match(array('GET', 'POST'), '/logout', 'LoginController@logout');
 
@@ -74,5 +78,23 @@ Route::group(['prefix' => 'customer', 'middleware' => 'auth.checkrole:client', '
 	Route::get('order', ['as' => 'order.index','uses' => 'CheckoutController@index']);
 	Route::get('order/create', ['as' => 'order.create','uses' => 'CheckoutController@create']);
 	Route::post('order/store', ['as' => 'order.store','uses' => 'CheckoutController@store']);
+
+});
+
+Route::group(['prefix' => 'api', 'middleware' => 'oauth', 'as' => 'api.'], function() {
+
+	Route::get('pedidos', function() {
+		return [
+			'id' => 1,
+			'client' => 'Luiz Carlos',		
+			'total' => 10,
+		];
+	});
+
+	Route::get('teste', function() {
+		return [
+			'message' => 'Isso Eh um Teste!',
+		];
+	});
 
 });
