@@ -83,18 +83,25 @@ Route::group(['prefix' => 'customer', 'middleware' => 'auth.checkrole:client', '
 
 Route::group(['prefix' => 'api', 'middleware' => 'oauth', 'as' => 'api.'], function() {
 
-	Route::get('pedidos', function() {
-		return [
-			'id' => 1,
-			'client' => 'Luiz Carlos',		
-			'total' => 10,
-		];
+	Route::group(['prefix' => 'client', 'middleware' => 'oauth.checkrole:client', 'as' => 'client.'], function() {
+		
+		Route::resource('order',
+			'Api\Client\ClientCheckoutController', ['except' => ['create','edit','destroy']]);
+
 	});
 
-	Route::get('teste', function() {
-		return [
-			'message' => 'Isso Eh um Teste!',
-		];
+	Route::group(['prefix' => 'deliveryman', 'middleware' => 'oauth.checkrole:deliveryman', 'as' => 'deliveryman.'], function() {
+
+		Route::get('pedidos', function() {
+			return [
+				'id' => 1,
+				'client' => 'Luiz Carlos - Entregador',		
+				'total' => 10,
+			];
+		});
+
 	});
+
+	Route::get('authenticated', 'Api\UserController@authenticated');
 
 });
