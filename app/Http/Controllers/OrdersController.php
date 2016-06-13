@@ -4,7 +4,7 @@ namespace CodeDelivery\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use CodeDelivery\Http\Requests\AdminOrderRequest;
+use CodeDelivery\Http\Requests\CheckoutRequest;
 
 use CodeDelivery\Services\OrderService;
 use CodeDelivery\Repositories\OrderRepository;
@@ -111,7 +111,7 @@ class OrdersController extends Controller
             ));
     }
 
-    public function store(AdminOrderRequest $request)
+    public function store(CheckoutRequest $request)
     {
         $data = $request->all();
         $this->service->create($data);

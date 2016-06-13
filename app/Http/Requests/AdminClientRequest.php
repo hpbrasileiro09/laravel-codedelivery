@@ -24,10 +24,7 @@ class AdminClientRequest extends Request
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zipcode' => 'required',
+            
         ];
     }
 }
