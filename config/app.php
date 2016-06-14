@@ -169,6 +169,8 @@ return [
         CodeDelivery\Providers\RepositoryServiceProvider::class,
 
         Bestmomo\Scafold\ScafoldServiceProvider::class,
+
+        Barryvdh\Cors\ServiceProvider::class,
         
     ],
 

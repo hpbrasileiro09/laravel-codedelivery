@@ -4,9 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0e681d1802bc3355b9e6f7b3be9ee0c",
-    "content-hash": "6fb9a6f151fd54225db7668e0ac71f46",
+    "hash": "4a59a85d76ce50835eb6021eccf60deb",
+    "content-hash": "c9ffa64c8d9a403bec20c8f2de4f6b24",
     "packages": [
+        {
+            "name": "barryvdh/laravel-cors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-cors.git",
+                "reference": "d4a1b08307b99dbc6df8f7faa1ade587a622f7be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/d4a1b08307b99dbc6df8f7faa1ade587a622f7be",
+                "reference": "d4a1b08307b99dbc6df8f7faa1ade587a622f7be",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.x|5.2.x|5.3.x",
+                "php": ">=5.5.9",
+                "symfony/http-foundation": "~2.7|~3.0",
+                "symfony/http-kernel": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Cors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain",
+                "laravel"
+            ],
+            "time": "2016-06-10 05:44:37"
+        },
         {
             "name": "bestmomo/scafold",
             "version": "V1.0.0",
@@ -358,7 +411,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7a4a0226f8a00d35af0765a3fb2be46841d843fa",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cf6d2da5d7f75aeaa941ab6d2d570137e8d8dfd8",
                 "reference": "8c51aa5427f90c0bf37e16cbdc2567255e91afac",
                 "shasum": ""
             },
@@ -1408,7 +1461,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/382fc9ed852edabd6133e34f8549d7a7d99db115",
+                "url": "https://api.github.com/repos/symfony/console/zipball/10c516001f398f9d4bc22f7cefb270984836c5d0",
                 "reference": "34a214710e0714b6efcf40ba3cd1e31373a97820",
                 "shasum": ""
             },
@@ -1634,7 +1687,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d268a643884f85e91d6ba11ca68de96833f3f6e5",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1f77a42264499dfc27e25d1ff2e9783980486ef9",
                 "reference": "18b24bc32d2495ae79d76e777368786a6536fe31",
                 "shasum": ""
             },
@@ -2060,7 +2113,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/2b0aacaa613c0ec1ad8046f972d8abdcb19c1db7",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/686bfd8ac610a45dba541ab9ab12a35515b58b71",
                 "reference": "f7a07af51ea067745a521dab1e3152044a2fb1f2",
                 "shasum": ""
             },
@@ -2187,7 +2240,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/c15a9457a6894b8180b56f79cd57ee8eae6d6bf3",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8c9a0b50a1dbd69dc7c73a492d8825cccc147c7f",
                 "reference": "c15a9457a6894b8180b56f79cd57ee8eae6d6bf3",
                 "shasum": ""
             },
@@ -3422,7 +3475,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/3efdbaf135e2cefe060be6cfda516964827104ac",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/382e85abe8d9908fdb96e556cc1c6818f9961a35",
                 "reference": "407e31ad9742ace5c3d01642f02a3b2e6062bae5",
                 "shasum": ""
             },
