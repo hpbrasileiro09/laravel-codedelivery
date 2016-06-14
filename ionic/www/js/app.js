@@ -42,30 +42,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'angular-oauth2'])
   $stateProvider
     .state('main', {
       url: '/',
-      templateUrl: 'templates/main.html'
+      templateUrl: 'templates/home.html'
     })
-      .state('main.a', {
-        url: '/a',
-        templateUrl: 'templates/main-a.html'
-      })
-      .state('main.b', {
-        url: '/b',
-        templateUrl: 'templates/main-b.html'
-      })
     .state('home', {
-      url: '/home/:nome',
+      url: '/home',
       templateUrl: 'templates/home.html',
-      controller: 'HomeCtrl'
+      controller: function($scope) {
+        $scope.message = 'Estamos na Home';
+      }
     })
-      .state('home.a', {
-        url: '/a',
-        templateUrl: 'templates/home-a.html'
-      })
-      .state('home.b', {
-        url: '/b',
-        templateUrl: 'templates/home-b.html'
-      })
-  $stateProvider
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
